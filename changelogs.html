@@ -1,0 +1,575 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Changelogs</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/1828/1828634.png">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body{
+            background-color: #efe5fd;
+            font-size: 15px;
+        }
+        @media only screen and (max-width:10000px) {
+            body{
+                font-size: 12px;
+            }
+            .menu{
+                font-size: 2em;
+            }
+            #home:hover::after{
+            content: "Welcome";
+            font-size: 1em;
+        }
+            #download:hover::after{
+            content: "Latest version: 1.6";
+            font-size: 1em;
+        }
+        #changelogs:hover::after{
+            content: "View Changelogs";
+            font-size: 1em;
+        }
+        #about:hover::after{
+            content: "About this project";
+            font-size: 1em;
+        }
+        #changelogs:not(:hover)::after{
+                content: "Hi there !";
+                position: absolute;
+                left:20px;
+                top:12px;
+                color:#5300e8;
+                font-size: 1em;
+                pointer-events: none;
+                z-index:-1;
+            }
+      }
+        @media only screen and (max-width:500px) {
+            body{
+                font-size: 8px;
+            }
+            #home:not(:hover)::after{
+                content: "Hi !";
+                position: absolute;
+                left:20px;
+                top:12px;
+                color:#5300e8;
+                font-size: 1em;
+                transition: 0.3s;
+                pointer-events: none;
+                z-index:-1;
+            }
+            #home:hover::after{
+            content: "Hi !";
+        }
+            #download:hover::after{
+            content: " ";
+        }
+        #changelogs:hover::after{
+            content: " ";
+        }
+        #about:hover::after{
+            content: " ";
+        }
+    }  
+    
+    @media only screen and (max-width:610px) {
+            body{
+                font-size: 10px;
+            }
+            .menu{
+                font-size: 0.58rem;
+            }
+        }
+    ::-webkit-scrollbar{width:10px;background-color: rgba(212, 191, 249,0.7);}
+    ::-webkit-scrollbar-thumb {
+  background: #3d00e0; 
+  border-radius: 5px;
+    }
+    @keyframes main {
+        0%{position: fixed;top:-100em;opacity: 0;pointer-events: none;}
+        100%{position: fixed;top:0;opacity: 1;pointer-events: all;}
+       }
+       @keyframes content {
+        0%{position: relative;bottom:-100em;opacity: 0;pointer-events: none;}
+        100%{position: relative;bottom:0;opacity: 1;pointer-events: all;}
+       }
+       .menu{
+            background-color: rgba(212, 191, 249,0.7);
+            text-align: center;
+            position: fixed;
+            transition: 0.3s;
+            left:0.5em;
+            top:0;
+            right:0.5em;
+            padding: 10px;
+            border-end-start-radius: 10px;
+            border-end-end-radius: 10px;
+            z-index: 99;
+            backdrop-filter: blur(0.5em);
+            animation:main 1s forwards;
+            ol{
+            display: inline;
+            }
+        }
+        .menu:hover{
+            button{
+                padding:10px 20px;
+                font-size: 1em;
+                border-radius: 10px;
+                background-color: rgba(212, 191, 249,0.7);
+                border: 1px solid rgba(212, 191, 249,0.7);
+            }
+        }
+        .menu:not(:hover){
+            button:focus{
+                box-shadow: none;
+            }
+            #changelogs:focus{
+                border-bottom: 3px solid #5300e8;
+            }
+        }
+        .menu{
+            a{
+                text-decoration: none;
+            }
+            button{
+                all:unset;
+                border: unset;
+                padding:unset;
+                color:#3d00e0;
+                border-radius: unset;
+                background-color: unset;
+                font-size: 1.5em;
+                transition: 0.3s;
+            }
+            button:hover{
+                background-color: #5300e8;
+                color:white;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+            button:focus{
+                box-shadow: 2px 2px 1px 2px #652dfd;
+            }
+            button:hover::after{
+                content: "";
+                position: absolute;
+                left:20px;
+                top:12px;
+                color:white;
+                background-color: #5300e8;
+                border-radius: 10px;
+                font-size: 2em;
+                transition: 0.3s;
+            }
+            #changelogs{
+                border-bottom: 3px solid #5300e8;
+            }
+            #changelogs:focus{
+                border-bottom: 3px solid rgba(212, 191, 249,0.7);
+            }
+           
+            button:not(:hover)::after{
+                content: "";
+                position: absolute;
+                left:20px;
+                top:12px;
+                color:#5300e8;
+                font-size: 2em;
+                transition: 0.3s;
+                pointer-events: none;
+            }
+
+        }
+        .view{
+        position: relative;
+        top:5em;
+      }
+        .main:hover{
+        transform: scale(1.01);
+       }
+       .main{
+        background-color: #b794f6;
+        color:#6002ee;
+        transition: 0.3s;
+        height: auto;
+        opacity: 0;
+        margin: 0.5em;
+        text-align: center;
+        border-radius: 30px;
+        animation: content 0.7s forwards;
+        animation-delay: 0.9s;
+        h1{
+            font-size: 4em;
+        }
+        h2{
+            font-size: 2em;
+        }
+        button{
+            all:unset;
+            border: 1px solid rgba(212, 191, 249,0.7);
+            padding:10px 20px;
+            color:#3d00e0;
+            border-radius: 10px;
+            background-color: rgba(212, 191, 249,0.7);
+            transition: 0.3s;     
+            font-size: 3em;
+            cursor: pointer;
+            position: relative;
+            top:-0.3em;
+            box-shadow: 3px 4px 1px 3px #652dfd;
+        }
+        button:hover{
+            background-color: #3d00e0;
+            color:white;
+            transform: scale(1.01);
+        }
+        button:focus{
+                transform: translate(4px,4px);
+                box-shadow: none;
+            }
+       }
+       .mainn{
+        background-color: #b794f6;
+        color:#6002ee;
+        transition: 0.3s;
+        height: auto;
+        margin: 0.5em;
+        margin-left: 10em;
+        margin-right: 10em;
+        text-align: center;
+        border-radius: 30px;
+        h1{
+            font-size: 4em;
+        }
+        h2{
+            font-size: 2em;
+        }
+        button{
+            all:unset;
+            border: 1px solid rgba(212, 191, 249,0.7);
+            padding:10px 20px;
+            color:#3d00e0;
+            border-radius: 10px;
+            background-color: rgba(212, 191, 249,0.7);
+            transition: 0.3s;     
+            font-size: 3em;
+            cursor: pointer;
+            position: relative;
+            top:-0.3em;
+            box-shadow: 3px 4px 1px 3px #652dfd;
+            transition: 0.3s;
+        }
+        button:hover{
+            background-color: #3d00e0;
+            color:white;
+            transform: scale(1.01);
+        }
+        button:focus{
+                transform: translate(4px,4px);
+                box-shadow: none;
+            }
+       }
+       #changed{
+        display: none;
+       }
+    #changelogs:hover{
+        #change{
+        display: none;
+        }
+        #changed{
+        display: block;
+      }
+      .tooltips{
+        display: block;
+        font-size: 1em;
+      }
+    }
+    #learnt{
+        display: none;
+       }
+    #btn:hover{
+        #learn{
+        display: none;
+        }
+        #learnt{
+        display: block;
+      }
+    }
+    #housee{
+        display: none;
+       }
+    #home:hover{
+        #house{
+        display: none;
+        }
+        #housee{
+        display: block;
+      }
+      .tooltip{
+        font-size: 1em;
+      }
+    }
+    #infor{
+        display: none;
+       }
+
+    #download:hover{
+        .tooltipss{
+            font-size: 1em;
+        }
+    }
+    #about:hover{
+        #info{
+        display: none;
+        }
+        #infor{
+        display: block;
+      }
+      .tooltip{
+        font-size: 1em;
+      }
+    }
+    a{
+        text-decoration: none;
+    }
+    hr{
+        margin-top: -2em;
+        width: 10%;
+        border: #3d00e0 solid 2px;
+        border-radius: 50px;
+    }
+    #downn{
+       display: none; 
+    }
+    #btn:hover{
+        #down{
+            display: none;
+        }
+        #downn{
+            display: block;
+        }
+    }
+    #btn:hover::after{
+        content: "Check out";
+        top:2em;
+        left:-1.5em;
+        right:0;
+        font-size: 1em;
+        width: 5em;
+        color: white;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+    #btn:not(:hover)::after{
+        content: " ";
+        font-size: 0;
+        width: 0;
+    }
+    #home{
+        width: 1em;
+    }
+    #home:not(:hover)::after{
+        content: " ";
+        font-size: 0;
+        width: 0;
+    }
+    .tooltip{
+        display: block;
+        position: absolute;
+        margin-left: -1em;
+        margin-top: 1em;
+        background-color: #3d00e0;
+        color:white;
+        border-radius: 10px;
+        padding: 0.3em;
+        font-size: 0;
+        transition: 0.3s;
+    }
+    .tooltips{
+        display: block;
+        position: absolute;
+        margin-left: -2.1em;
+        margin-top: 1.1em;
+        background-color: #3d00e0;
+        color:white;
+        border-radius: 10px;
+        padding: 0.3em;
+        font-size: 0;
+        transition: 0.3s;
+    }
+    .tooltipss{
+        display: block;
+        position: absolute;
+        margin-left: -1.9em;
+        margin-top: 1.1em;
+        background-color: #3d00e0;
+        color:white;
+        border-radius: 10px;
+        padding: 0.3em;
+        font-size: 0;
+        transition: 0.3s;
+    }
+    #ver1{
+        opacity: 0;
+        animation: content 0.7s forwards;
+        animation-delay: 1.6s;
+    }
+    #ver2{
+        opacity: 0;
+        animation: content 0.7s forwards;
+        animation-delay: 1.8s;
+    }
+    #ver3{
+        opacity: 0;
+        animation: content 0.7s forwards;
+        animation-delay: 2s;
+    }
+    #ver4{
+        opacity: 0;
+        animation: content 0.7s forwards;
+        animation-delay: 2.2s;
+    }
+    #ver5{
+        opacity: 0;
+        animation: content 0.7s forwards;
+        animation-delay: 2.4s;
+    }
+    #ver6{
+        opacity: 0;
+        animation: content 0.7s forwards;
+        animation-delay: 2.6s;
+    }
+    #ver7{
+        opacity: 0;
+        animation: content 0.7s forwards;
+        animation-delay: 2.8s;
+    }
+    </style>
+    <script>
+
+    </script>
+</head>
+<body>
+    <div class="menu">
+        <ol><a href="index.html" draggable="false"><button id="home">
+            <div id="house"><i class="fi fi-rs-home"></i></div>
+            <div id="housee"><i class="fi fi-ss-home"></i></div>
+            <div class="tooltip">Home</div>
+        </button></a></ol>
+        <ol><a href="404.txt" download="1.6.txt">
+            <button id="download">
+                <div id="change" > <i class="fi fi-ss-download"></i></div>
+                <div class="tooltipss">Download</div>
+            </button>
+        </a></ol>
+        <ol><button id="changelogs">
+            <div id="change" > <i class="fi fi-rs-poll-h"></i></div>
+            <div id="changed"> <i class="fi fi-ss-poll-h"></i></div>
+            <div class="tooltips">Changelogs</div>
+        </button></ol>
+        <ol><a href="about.html" draggable="false"><button id="about">
+        <div id="info" > <i class="fi fi-rs-info"></i></div>        
+        <div id="infor" > <i class="fi fi-ss-info"></i></div>
+        <div class="tooltip">About</div>
+    </button></a></ol>
+    </div>
+    <div class="view">
+    <div class="main">
+        <h1>CHANGELOGS</h1>
+        <hr>
+        <h2>See what changes we made throughout the period.</h2>
+        <br>
+        </div>
+    <div class="mainn" id="ver1">
+        <h2>Latest version: 1.6</h2>
+        <h4>December 25, 2024</h4>
+        <h2>What's new:</h2>
+        <h3>&#8226 Optimized for better experiences</h3>
+        <h3>&#8226 Fix some crash bugs</h3>
+        <h3>&#8226 Added Searching feature</h3>
+        <h3>&#8226 Merry Christmas !</h3>
+        <br>
+        <a href="" draggable="false"><button id="btn">
+            <div id="down"><i class="fi fi-rs-search"></i></div>
+            <div id="downn"><i class="fi fi-ss-search"></i></div>
+        </button></a>
+    </div>
+    <div class="mainn" id="ver2">
+        <h2>Version 1.5</h2>
+        <h4>December 10, 2024</h4>
+        <h2>What's new:</h2>
+        <h3>&#8226 Screen reader feedback on suggestions are now applied</h3>
+        <h3>&#8226 Fix some bugs</h3>
+        <br>
+        <a href="" draggable="false"><button id="btn">
+            <div id="learn">  <i class="fi fi-rs-search"></i></div>
+            <div id="learnt">  <i class="fi fi-ss-search"></i></div>
+        </button></a>
+    </div>
+    <div class="mainn" id="ver3">
+        <h2>Version 1.4</h2>
+        <h4>November 29, 2024</h4>
+        <h2>What's new:</h2>
+        <h3>&#8226 Empty files now display correctly</h3>
+        <br>
+        <a href="" draggable="false"><button id="btn">
+            <div id="learn">  <i class="fi fi-rs-search"></i></div>
+            <div id="learnt">  <i class="fi fi-ss-search"></i></div>
+        </button></a>
+    </div>
+    <div class="mainn" id="ver4">
+        <h2>Version 1.3</h2>
+        <h4>October 17, 2024</h4>
+        <h2>What's new:</h2>
+        <h3>&#8226 No longer does renaming the spec question include a scroll bar</h3>
+        <h3>&#8226 Fix some minor bugs</h3>
+        <br>
+        <a href="" draggable="false"><button id="btn">
+            <div id="learn">  <i class="fi fi-rs-search"></i></div>
+            <div id="learnt">  <i class="fi fi-ss-search"></i></div>
+        </button></a>
+    </div>
+    <div class="mainn" id="ver5">
+        <h2>Version 1.2</h2>
+        <h4>August 20, 2024</h4>
+        <h2>What's new:</h2>
+        <h3>&#8226 Fixed an issue where renamed files did not update</h3>
+        <h3>&#8226 Fix some bugs</h3>
+        <h3>&#8226 Adding new files will auto-populate the path</h3>
+        <br>
+        <a href="" draggable="false"><button id="btn">
+            <div id="learn">  <i class="fi fi-rs-search"></i></div>
+            <div id="learnt">  <i class="fi fi-ss-search"></i></div>
+        </button></a>
+    </div>
+    <div class="mainn" id="ver6">
+        <h2>Version 1.1</h2>
+        <h4>August 13, 2024</h4>
+        <h2>What's new:</h2>
+        <h3>&#8226 A missing checkbox label on commit dialog has been added</h3>
+        <br>
+        <a href="" draggable="false"><button id="btn">
+            <div id="learn">  <i class="fi fi-rs-search"></i></div>
+            <div id="learnt">  <i class="fi fi-ss-search"></i></div>
+        </button></a>
+    </div>
+    <div class="mainn" id="ver7">
+        <h2>First release: 1.0</h2>
+        <h4>August 9, 2024</h4>
+        <h3>No information.</h3>
+        <br>
+        <a href="" draggable="false"><button id="btn">
+            <div id="learn">  <i class="fi fi-rs-search"></i></div>
+            <div id="learnt">  <i class="fi fi-ss-search"></i></div>
+        </button></a>
+    </div>
+    <h2 style="text-align: center;color:red;opacity: 0;animation: content 0.7s forwards;animation-delay: 3s;">HOW DID YOU GET THERE ?</h2>
+    </div>
+</body>
+</html>

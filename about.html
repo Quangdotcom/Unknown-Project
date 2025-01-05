@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>About</title>
+    <link rel="icon" type="image/x-icon" href="https://static-00.iconduck.com/assets.00/help-about-icon-256x256-abn3323q.png">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body{
+            background-color: #efe5fd;
+            font-size: 15px;
+        }
+        @media only screen and (max-width:10000px) {
+            body{
+                font-size: 12px;
+            }
+            .menu{
+                font-size: 2em;
+            }
+            #home:hover::after{
+            content: "Welcome";
+            font-size: 1em;
+        }
+            #download:hover::after{
+            content: "Latest version: 1.6";
+            font-size: 1em;
+        }
+        #changelogs:hover::after{
+            content: "View Changelogs";
+            font-size: 1em;
+        }
+        #about:hover::after{
+            content: "About this project";
+            font-size: 1em;
+        }
+        #about:not(:hover)::after{
+                content: "Hi there !";
+                position: absolute;
+                left:20px;
+                top:12px;
+                color:#5300e8;
+                font-size: 1em;
+                pointer-events: none;
+                z-index:-1;
+            }
+      }
+        @media only screen and (max-width:500px) {
+            body{
+                font-size: 8px;
+            }
+            #about:not(:hover)::after{
+                content: "Hi !";
+                position: absolute;
+                left:20px;
+                top:12px;
+                color:#5300e8;
+                font-size: 1em;
+                transition: 0.3s;
+                pointer-events: none;
+                z-index:-1;
+            }
+            #home:hover::after{
+            content: " ";
+        }
+            #download:hover::after{
+            content: " ";
+        }
+        #changelogs:hover::after{
+            content: " ";
+        }
+        #about:hover::after{
+            content: "Hi !";
+        }
+    }  
+    
+    @media only screen and (max-width:610px) {
+            body{
+                font-size: 10px;
+            }
+            .menu{
+                font-size: 0.58rem;
+            }
+        }
+    ::-webkit-scrollbar{width:10px;background-color: rgba(212, 191, 249,0.7);}
+    ::-webkit-scrollbar-thumb {
+  background: #3d00e0; 
+  border-radius: 5px;
+    }
+    @keyframes main {
+        0%{position: fixed;top:-100em;opacity: 0;pointer-events: none;}
+        100%{position: fixed;top:0;opacity: 1;pointer-events: all;}
+       }
+       @keyframes content {
+        0%{position: relative;bottom:-100em;opacity: 0;pointer-events: none;}
+        100%{position: relative;bottom:0;opacity: 1;pointer-events: all;}
+       }
+       .menu{
+            background-color: rgba(212, 191, 249,0.7);
+            text-align: center;
+            position: fixed;
+            transition: 0.3s;
+            left:0.5em;
+            top:0;
+            right:0.5em;
+            padding: 10px;
+            border-end-start-radius: 10px;
+            border-end-end-radius: 10px;
+            z-index: 99;
+            backdrop-filter: blur(0.5em);
+            animation:main 1s forwards;
+            ol{
+            display: inline;
+            }
+        }
+        .menu:hover{
+            button{
+                padding:10px 20px;
+                font-size: 1em;
+                border-radius: 10px;
+                background-color: rgba(212, 191, 249,0.7);
+                border: 1px solid rgba(212, 191, 249,0.7);
+            }
+        }
+        .menu:not(:hover){
+            button:focus{
+                box-shadow: none;
+            }
+            #about:focus{
+                border-bottom: 3px solid #5300e8;
+            }
+        }
+        .menu{
+            a{
+                text-decoration: none;
+            }
+            button{
+                all:unset;
+                border: unset;
+                padding:unset;
+                color:#3d00e0;
+                border-radius: unset;
+                background-color: unset;
+                font-size: 1.5em;
+                width: 1em;
+                transition: 0.3s;
+            }
+            button:hover{
+                background-color: #5300e8;
+                color:white;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+            button:focus{
+                box-shadow: 2px 2px 1px 2px #652dfd;
+            }
+            button:hover::after{
+                content: "";
+                position: absolute;
+                left:20px;
+                top:12px;
+                color:white;
+                background-color: #5300e8;
+                border-radius: 10px;
+                font-size: 2em;
+                transition: 0.3s;
+            }
+            #about{
+                border-bottom: 3px solid #5300e8;
+            }
+            #about:focus{
+                border-bottom: 3px solid rgba(212, 191, 249,0.7);
+            }
+           
+            button:not(:hover)::after{
+                content: "";
+                position: absolute;
+                left:20px;
+                top:12px;
+                color:#5300e8;
+                font-size: 2em;
+                transition: 0.3s;
+                pointer-events: none;
+            }
+
+        }
+        .view{
+        position: relative;
+        top:5em;
+      }
+       .main{
+
+        background-color: #b794f6;
+        color:#6002ee;
+        transition: 0.3s;
+        height: auto;
+        opacity: 0;
+        margin: 0.5em;
+        margin-left: 1em;
+        margin-right: 1em;
+        text-align: center;
+        border-radius: 30px;
+        animation: content 0.7s forwards;
+        animation-delay: 0.9s;
+        h1{
+            font-size: 4em;
+        }
+        h2{
+            font-size: 2em;
+        }
+        button{
+            all:unset;
+            border: 1px solid rgba(212, 191, 249,0.7);
+            padding:0.3em 0.6em;
+            color:#3d00e0;
+            border-radius: 10px;
+            background-color: rgba(212, 191, 249,0.7);
+            transition: 0.3s;     
+            font-size: 3em;
+            cursor: pointer;
+            position: relative;
+            top:-0.3em;
+            width: 30%;
+            box-shadow: 3px 4px 1px 3px #652dfd;
+        }
+        button:hover{
+            background-color: #3d00e0;
+            color:white;
+            transform: scale(1.01);
+        }
+        button:focus{
+                transform: translate(4px,4px);
+                box-shadow: none;
+            }
+       }
+       #changed{
+        display: none;
+       }
+    #changelogs:hover{
+        #change{
+        display: none;
+        }
+        #changed{
+        display: block;
+      }
+      .tooltips{
+        display: block;
+        font-size: 1em;
+      }
+    }
+    #learnt{
+        display: none;
+       }
+    #btn:hover{
+        #learn{
+        display: none;
+        }
+        #learnt{
+        display: block;
+      }
+    }
+    #housee{
+        display: none;
+       }
+    #home:hover{
+        #house{
+        display: none;
+        }
+        #housee{
+        display: block;
+      }
+      .tooltip{
+        font-size: 1em;
+      }
+    }
+    #infor{
+        display: none;
+       }
+
+    #download:hover{
+        .tooltipss{
+            font-size: 1em;
+        }
+    }
+    #about:hover{
+        #info{
+        display: none;
+        }
+        #infor{
+        display: block;
+      }
+      .tooltip{
+        font-size: 1em;
+      }
+    }
+    a{
+        text-decoration: none;
+    }
+    hr{
+        margin-top: -2em;
+        width: 10%;
+        border: #3d00e0 solid 2px;
+        border-radius: 50px;
+    }
+    #home:not(:hover)::after{
+        content: " ";
+        font-size: 0;
+        width: 0;
+    }
+    .tooltip{
+        display: block;
+        position: absolute;
+        margin-left: -1em;
+        margin-top: 1em;
+        background-color: #3d00e0;
+        color:white;
+        border-radius: 10px;
+        padding: 0.3em;
+        font-size: 0;
+        transition: 0.3s;
+    }
+    .tooltips{
+        display: block;
+        position: absolute;
+        margin-left: -2.1em;
+        margin-top: 1.1em;
+        background-color: #3d00e0;
+        color:white;
+        border-radius: 10px;
+        padding: 0.3em;
+        font-size: 0;
+        transition: 0.3s;
+    }
+    .tooltipss{
+        display: block;
+        position: absolute;
+        margin-left: -1.9em;
+        margin-top: 1.1em;
+        background-color: #3d00e0;
+        color:white;
+        border-radius: 10px;
+        padding: 0.3em;
+        font-size: 0;
+        transition: 0.3s;
+    }
+    </style>
+    <script>
+
+    </script>
+</head>
+<body>
+    <div class="menu">
+        <ol><a href="index.html" draggable="false"><button id="home">
+            <div id="house"><i class="fi fi-rs-home"></i></div>
+            <div id="housee"><i class="fi fi-ss-home"></i></div>
+            <div class="tooltip">Home</div>
+        </button></a></ol>
+        <ol><a href="404.txt" download="1.6.txt">
+            <button id="download">
+                <div id="change" > <i class="fi fi-ss-download"></i></div>
+                <div class="tooltipss">Download</div>
+            </button>
+        </a></ol>
+        <ol><a href="changelogs.html" draggable="false">
+            <button id="changelogs">
+            <div id="change" ><i class="fi fi-rs-poll-h"></i></div>
+            <div id="changed"><i class="fi fi-ss-poll-h"></i></div>
+            <div class="tooltips">Changelogs</div>          
+        </button>
+          </a>
+      </ol>
+        <ol>
+            <button id="about">
+        <div id="info" > <i class="fi fi-rs-info"></i></div>        
+        <div id="infor" > <i class="fi fi-ss-info"></i></div>
+        <div class="tooltip">About</div>
+    </button>
+          </a>
+      </ol>
+    </div>
+    <div class="view">
+    <div class="main">
+        <h1>ABOUT THIS PROJECT</h1>
+        <hr>
+        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Lorem ipsum dolor sit amet,</h2>
+        <br>
+        <a href="index.html" draggable="false"><button id="btn">
+            <div id="learn">I've read all of it ! <i class="fi fi-rs-assept-document"></i></div>
+            <div id="learnt">I've read all of it ! <i class="fi fi-ss-assept-document"></i></div>
+        </button></a>
+        <h2 style="text-align: center;font-size: 1.5em;color:red;position: relative;top:2em">HOW DID YOU GET THERE ?</h2>
+    </div>
+    </div>
+</body>
+</html>
