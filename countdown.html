@@ -1,0 +1,139 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="https://media.lordicon.com/icons/wired/flat/45-clock-time.svg">
+<title>COUNTDOWN 2026</title>
+
+<style>
+    body{
+        background-color: #3c3c3c;
+        font-size: 55px;
+        transition: 0.5s;
+    }
+    h1 {
+        text-align: center;
+        color:white;
+    }
+    #new{
+        margin-top: 2em;
+        font-size: 50px;
+    }
+    #time{
+      font-size: 50px;
+    }
+  a{
+    font-size:14px;
+    text-align:center;
+    position:fixed;
+    background-color: rgba(3, 0, 0, 0.1);
+    backdrop-filter: blur(0.5em);
+    top:5px;
+    left:5px;
+    padding:10px;
+    border-radius:10px;
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
+    border:1px solid white;
+  }
+  a:hover{
+    background-color: rgba(98, 0, 255, 0.5);;
+    backdrop-filter: blur(0.5em);
+    opacity: 1;
+  }
+  #mark{
+    position:fixed;
+    bottom:-5px;
+    right:5px;
+    font-size:14px;
+    color:gray;
+    cursor:help;
+  }
+  #head{
+    color:rgb(224, 47, 47);
+  }
+</style>
+</head>
+<body>
+<a href="index.html" id="home">BACK TO HOME</a>
+<div id="new"><h1 id="head">2026<br>NEW YEAR'S EVE</h1></div>
+<h1 id="time">LOADING...</h1>
+<p id="mark"title="JUST A MARK">QUANG 2026</p>
+<script>
+  console.log("QUANG 2025");
+  setTimeout(function() {
+    document.getElementById("head").innerHTML = "TIME LEFT";
+    document.getElementById("time").style.fontSize = "2em";
+  },1000)
+var countDownDate = new Date("Jan 1, 2026 00:00:00").getTime();
+
+var x = setInterval(function() {
+
+  var now = new Date().getTime();
+    
+  var distance = countDownDate - now;
+    
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    if(days >  1){
+        days = days + " days ";
+    }
+    if(days ===  1){
+        days = days + " day ";
+    }
+    if(days ===  0){
+        days = "";
+    }
+    if(hours >  1){
+        hours = hours + " hours ";
+    }
+    if(hours ===  1){
+        hours = hours + " hour ";
+    }
+    if(hours ===  0){
+        hours = "";
+    }
+    if(minutes >  1){
+        minutes = minutes + " mins ";
+    }
+    if(minutes ===  1){
+        minutes = minutes + " min ";
+    }
+    if(minutes ===  0){
+        minutes = "";
+    }
+    if(seconds >  1){
+        seconds = seconds + " secs";
+    }
+    if(seconds <=  1){
+        seconds = seconds + " sec";
+    }
+    document.getElementById("time").innerHTML = days + hours + minutes + seconds;
+  if (distance <= 0) {
+        clearInterval(x);
+        document.getElementById("time").innerHTML = "HAPPY NEW YEAR 2026";
+        document.getElementById("time").style.marginTop = "5em";
+        document.body.style.backgroundColor = "red";
+        document.getElementById("new").style.display = "none";
+        document.getElementById("mark").style.display = "none";
+        document.getElementById("home").style.display = "none";
+  }
+  if ( distance < -1000) {
+        clearInterval(x);
+        document.getElementById("time").innerHTML = "THE EVENT HAS ENDED";
+        document.getElementById("time").style.marginTop = "300px";
+        document.body.style.backgroundColor = "black";
+        document.getElementById("new").style.display = "none";
+        document.getElementById("mark").style.display = "none";
+        document.getElementById("home").style.display = "unset";
+        document.getElementById("home").style.opacity = "0.7";
+  }
+}, 1000);
+</script>
+
+</body>
+</html>

@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,49 +10,105 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <style>
-        body{
-            background-color: #efe5fd;
-            font-size: 15px;
-        }
-        @media only screen and (max-width:10000px) {
-            body{
-                font-size: 12px;
+    <script>
+        window.onload = function() {
+            const home = document.getElementById('home');
+            const download = document.getElementById('download');
+            const changelogs = document.getElementById('changelogs');
+            const about = document.getElementById('about');
+            const body = document.body;
+            function greet() {
+                const hours = new Date().getHours();
+                const body = document.body;
+                const content = document.getElementById('content');
+                const greeting = document.getElementById('greeting');
+                if (hours < 12) {
+                    greeting.innerHTML = 'Good Morning !';
+                    body.style.backgroundColor = "white";
+                } else if (hours < 18) {
+                    greeting.innerHTML = 'Good Afternoon !';
+                } else if (hours < 22) {
+                    greeting.innerHTML = 'Good Evening !';
+                    body.style.backgroundColor = "#3c3c3c";
+                    content.style.color = "white";
+                }
+                else{
+                    greeting.innerHTML = 'Good Night !';
+                    body.style.backgroundColor = "black";
+                    content.style.color = "white";
+                }
             }
+            home.addEventListener('mouseover',()=>{
+                greeting.innerHTML = 'Hi there !';
+                greeting.classList.add('greethover');
+            });
+            home.addEventListener('mouseout',()=>{
+                greet();
+                greeting.classList.remove('greethover');
+            });
+            download.addEventListener('mouseover',()=>{
+                greeting.innerHTML = 'Latest version: 1.6';
+                greeting.classList.add('greethover');
+            });
+            download.addEventListener('mouseout',()=>{
+                greet();
+                greeting.classList.remove('greethover');
+            });
+            changelogs.addEventListener('mouseover',()=>{
+                greeting.innerHTML = 'View Changelogs';
+                greeting.classList.add('greethover');
+            });
+            changelogs.addEventListener('mouseout',()=>{
+                greet();
+                greeting.classList.remove('greethover');
+            });
+            about.addEventListener('mouseover',()=>{
+                greeting.innerHTML = 'About this project';
+                greeting.classList.add('greethover');
+            });
+            about.addEventListener('mouseout',()=>{
+                greet();
+                greeting.classList.remove('greethover');
+            });
+            setTimeout(() => {
+                body.classList.toggle("show");
+            }, 200);
+            greet();
+        }
+        setTimeout(() => {
+            const loading = document.getElementById('loading'); 
+            loading.innerHTML = 'Loading.';
+        },100)
+        setTimeout(() => {
+            const loading = document.getElementById('loading'); 
+            loading.innerHTML = 'Loading..';
+        },200)
+        setTimeout(() => {
+            const loading = document.getElementById('loading'); 
+            loading.innerHTML = 'Loading...';
+        },300)
+        setTimeout(() => {
+            const loading = document.getElementById('loading'); 
+            loading.innerHTML = 'Loading....';
+        },400)
+        setTimeout(() => {
+            const loading = document.getElementById('loading'); 
+            loading.innerHTML = 'Loading.....';
+        },450)
+      </script>
+    <style>
+        @media only screen and (max-width:10000px) {
             .menu{
                 font-size: 2em;
             }
-            #home:hover::after{
-            content: "Welcome";
-            font-size: 1em;
         }
-            #download:hover::after{
-            content: "Latest version: 1.6";
-            font-size: 1em;
-        }
-        #changelogs:hover::after{
-            content: "View Changelogs";
-            font-size: 1em;
-        }
-        #about:hover::after{
-            content: "About this project";
-            font-size: 1em;
-        }
-        #home:not(:hover)::after{
-                content: "Hi there !";
-                position: absolute;
-                left:20px;
-                top:12px;
-                color:#5300e8;
-                font-size: 1em;
-                transition: 0.3s;
-                pointer-events: none;
-                z-index:-1;
+    
+    @media only screen and (max-width:635px) {
+            .menu{
+                font-size: 0.8rem;
             }
-      }
-        @media only screen and (max-width:500px) {
-            body{
-                font-size: 8px;
+                        #greeting{
+                display: none;
             }
             #home:not(:hover)::after{
                 content: "Hi !";
@@ -68,25 +125,26 @@
             content: "Hi !";
         }
             #download:hover::after{
-            content: " ";
+            content: "⍗";
         }
         #changelogs:hover::after{
-            content: " ";
+            content: "✎";
         }
         #about:hover::after{
-            content: " ";
+            content: "ⓘ";
         }
-    }
-    
-    @media only screen and (max-width:610px) {
-            body{
-                font-size: 10px;
-            }
+        }
+    @media only screen and (max-width:850px) {
+        .menu{
+            font-size: 1rem;
+        }
+        }
+        @media only screen and (max-width:449px) {
             .menu{
-                font-size: 0.58rem;
+                font-size: 0.65em;
             }
         }
-    ::-webkit-scrollbar{width:10px;background-color: rgba(212, 191, 249,0.7);}
+    ::-webkit-scrollbar{width:0.5em}
     ::-webkit-scrollbar-thumb {
   background: #3d00e0; 
   border-radius: 5px;
@@ -99,9 +157,40 @@
         0%{position: relative;bottom:-100em;opacity: 0;pointer-events: none;}
         100%{position: relative;bottom:0;opacity: 1;pointer-events: all;}
        }
+body{
+            background-color: #2f1342a9;
+            font-size: 12px;  
+            transition: 0.7s;
+        .load{
+            color:white;
+            font-size: 2em;
+            text-align: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            font-size:2.5em;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            background-color: rgba(119, 0, 255, 0.575);
+            border-radius: 0.5em;
+            padding: 0.4em;
+            color:white;
+            pointer-events: none;
+        }
+          #mark{
+            position:fixed;
+            bottom:-5px;
+            right:5px;
+            font-size:14px;
+            color:black;
+            cursor:help;
+            transition:1s;
+  }
+        .root{display: none;}      
         .menu{
             background-color: rgba(212, 191, 249,0.7);
             text-align: center;
+            color:#3d00e0;
             position: fixed;
             transition: 0.3s;
             left:0.5em;
@@ -198,6 +287,315 @@
         opacity: 0;
         p{
             text-align: center;
+            width: 20em;
+            color:#8b3dff;
+            margin-left: auto;
+            margin-right: auto;
+        }
+       }
+       .main{
+        background-color: #b794f6;
+        color:#6002ee;
+        transition: 0.3s;
+        opacity: 0;
+        height: auto;
+        pointer-events: none;
+        margin: 0.5em;
+        text-align: center;
+        border-radius: 30px;
+        animation: content 0.7s forwards;
+        animation-delay: 0.9s;
+        h1{
+            font-size: 4em;
+        }
+        h2{
+            font-size: 2em;
+        }
+        button{
+            all:unset;
+            border: 1px solid rgba(212, 191, 249,0.7);
+            padding:0.3em 0.6em;
+            color:#3d00e0;
+            width: 50%;
+            border-radius: 10px;
+            background-color: rgba(212, 191, 249,0.7);
+            transition: 0.3s;     
+            font-size: 3em;
+            cursor: pointer;
+            position: relative;
+            top:-0.3em;
+            box-shadow: 3px 4px 1px 3px #652dfd;
+        }
+        button:hover{
+            background-color: #3d00e0;
+            color:white;
+        }
+        button:focus{
+                transform: translate(4px,4px);
+                box-shadow: none;
+            }
+       }
+       #changed{
+        display: none;
+       }
+    #changelogs:hover{
+        #change{
+        display: none;
+        }
+        #changed{
+        display: block;
+      }
+      .tooltips{
+        display: block;
+        font-size: 1em;
+      }
+    }
+    #learnt{
+        display: none;
+       }
+    #btn:hover{
+        #learn{
+        display: none;
+        }
+        #learnt{
+        display: block;
+      }
+    }
+    #housee{
+        display: none;
+       }
+    #home:hover{
+        #house{
+        display: none;
+        }
+        #housee{
+        display: block;
+      }
+      .tooltip{
+        font-size: 1em;
+      }
+    }
+    #infor{
+        display: none;
+       }
+
+    #download:hover{
+        .tooltipss{
+            font-size: 1em;
+        }
+    }
+    #about:hover{
+        #info{
+        display: none;
+        }
+        #infor{
+        display: block;
+      }
+      .tooltip{
+        font-size: 1em;
+      }
+    }
+    a{
+        text-decoration: none;
+    }
+    hr{
+        margin-top: -2em;
+        width: 10%;
+        border: #3d00e0 solid 2px;
+        border-radius: 50px;
+    }
+    #home{
+        width: 1em;
+    }
+    .tooltip{
+        display: block;
+        position: absolute;
+        margin-left: -1em;
+        margin-top: 1em;
+        background-color: #3d00e0;
+        color:white;
+        border-radius: 10px;
+        padding: 0.3em;
+        font-size: 0;
+        transition: 0.3s;
+    }
+    .tooltips{
+        display: block;
+        position: absolute;
+        margin-left: -2.1em;
+        margin-top: 1.1em;
+        background-color: #3d00e0;
+        color:white;
+        border-radius: 10px;
+        padding: 0.3em;
+        font-size: 0;
+        transition: 0.3s;
+    }
+    .tooltipss{
+        display: block;
+        position: absolute;
+        margin-left: -1.9em;
+        margin-top: 1.1em;
+        background-color: #3d00e0;
+        color:white;
+        border-radius: 10px;
+        padding: 0.3em;
+        font-size: 0;
+        transition: 0.3s;
+    }
+      .view{
+        position: relative;
+        top:5em;
+      }
+      #greeting{
+        position: absolute;
+        left:20px;
+        top:12px;
+        font-size: 1em;
+        transition: 0.3s;
+        pointer-events: none;
+        z-index:-1;
+      }
+      .greethover{
+        position: absolute;
+        border-radius: 0.3em;
+        left:20px;
+        top:12px;
+        color:white;
+        font-size: 1em;
+        transition: 0.3s;
+        pointer-events: none;
+        z-index:-1;
+        background-color: #5300e8;
+      }
+      #terms{
+        text-decoration: underline;
+        color:blue;
+      }
+      #terms:hover{
+        text-decoration: none;
+      }
+    }
+body.show{
+            background-color: #efe5fd;
+            font-size: 12px;  
+        .root{display: unset;}
+        .load{
+            text-align: center;
+            opacity: 0;
+            transition: 1s;
+            z-index: -1;
+        }
+          #mark{
+            position:fixed;
+            bottom:-5px;
+            right:5px;
+            font-size:14px;
+            color:black;
+            opacity:0;
+ 
+         }
+        .menu{
+            background-color: rgba(212, 191, 249,0.7);
+            text-align: center;
+            color:#3d00e0;
+            position: fixed;
+            transition: 0.3s;
+            left:0.5em;
+            top:0;
+            right:0.5em;
+            padding: 10px;
+            border-end-start-radius: 10px;
+            border-end-end-radius: 10px;
+            z-index: 99;
+            backdrop-filter: blur(0.5em);
+            animation:main 1s forwards;
+            ol{
+            display: inline;
+            }
+        }
+        .menu:not(:hover){
+            button:focus{
+                box-shadow: none;
+            }
+            #home:focus{
+                border-bottom: 3px solid #5300e8;
+            }
+        }
+        .menu:hover{
+            button{
+                padding:10px 20px;
+                font-size: 1em;
+                border-radius: 0.5em;
+                background-color: rgba(212, 191, 249,0.7);
+                border: 1px solid rgba(212, 191, 249,0.7);
+            }
+        }
+        .menu{
+            a{
+                text-decoration: none;
+            }
+            button{
+                all:unset;
+                border: unset;
+                padding:unset;
+                color:#3d00e0;
+                border-radius: unset;
+                background-color: unset;
+                font-size: 1.5em;
+                transition: 0.3s;
+            }
+            button:hover{
+                background-color: #5300e8;
+                color:white;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+            button:focus{
+                box-shadow: 2px 2px 1px 2px #652dfd;
+            }
+            button:hover::after{
+                content: "";
+                position: absolute;
+                left:20px;
+                top:12px;
+                color:white;
+                background-color: #5300e8;
+                border-radius: 10px;
+                font-size: 2em;
+                transition: 0.3s;
+            }
+            #home{
+                border-bottom: 3px solid #5300e8;
+            }
+            #home:focus{
+                border-bottom: 3px solid rgba(212, 191, 249,0.7);
+            }
+           
+            button:not(:hover)::after{
+                content: "";
+                position: absolute;
+                left:20px;
+                top:12px;
+                color:#5300e8;
+                font-size: 2em;
+                transition: 0.3s;
+                pointer-events: none;
+            }
+
+        }
+        .main:hover{
+        transform: scale(1.01);
+       }
+       .content{
+        animation: content 0.7s forwards;
+        animation-delay: 1.3s;
+        pointer-events: none;
+        text-align: center;
+        opacity: 0;
+        p{
+            text-align: center;
+            color:unset;
             width: 20em;
             margin-left: auto;
             margin-right: auto;
@@ -357,19 +755,111 @@
         position: relative;
         top:5em;
       }
+      #greeting{
+        position: absolute;
+        left:20px;
+        top:12px;
+        font-size: 1em;
+        transition: 0.3s;
+        pointer-events: none;
+        z-index:-1;
+      }
+      .greethover{
+        position: absolute;
+        border-radius: 0.3em;
+        left:20px;
+        top:12px;
+        color:white;
+        font-size: 1em;
+        transition: 0.3s;
+        pointer-events: none;
+        z-index:-1;
+        background-color: #5300e8;
+      }
+      #terms{
+        text-decoration: underline;
+        color:blue;
+      }
+      #terms:hover{
+        text-decoration: none;
+      }
+    }
+    .event{
+        background-color: #8577a0;
+        border-radius: 1.5em;
+        padding-bottom:1em;
+        margin: 1em;
+    }
+    #header{
+            color:white;
+            background-color: #5300e8;
+            text-decoration: none;
+            padding: 0.2em;
+            border-top-left-radius: 0.2em ;
+            border-top-right-radius: 0.2em ;
+        }
+    .events{
+        margin: 1em;
+        text-align: left;
+    }
+    #ended{
+            color:white;
+            background-color: red;
+            text-decoration: none;
+            border-radius: 0.2em;
+            padding: 0.1em;
+            display: inline-block;
+            font-size: 2em;
+            text-align: center;
+            width: 5em;
+            pointer-events: none;
+            font-weight: bold;
+        }
+    #ongoing{
+            color:white;
+            background-color: green;
+            text-decoration: none;
+            border-radius: 0.2em;
+            padding: 0.1em;
+            width: 5em;
+            display: inline-block;
+            text-align: center;
+            font-size: 2em;
+            pointer-events: none;
+            font-weight: bold;
+        }
+    #eventended{
+        font-size: 2em;
+        color:#3c3c3c;
+        font-weight:bold;
+        text-decoration: line-through;
+    }
+    #eventongoing{
+        font-size: 2em;
+        color:rgb(0, 255, 0);
+        font-weight:bold;
+        text-decoration: none;
+    }
+    #eventended:hover{
+            text-decoration: line-through red;
+        }
+    #eventongoing:hover{
+            text-decoration: underline;
+        }
     </style>
-    <script>
-
-    </script>
 </head>
 <body>
+    <div class="load" id="loading">Loading</div>
+    <p id="mark"title="JUST A MARK">QUANG 2025</p>
+    <div class="root">
     <div class="menu">
+        <div id="greeting" class="greet"></div>
         <ol><button id="home">
             <div id="house"><i class="fi fi-rs-home"></i></div>
             <div id="housee"><i class="fi fi-ss-home"></i></div>
             <div class="tooltip">Home</div>
         </button></ol>
-        <ol><a href="404.txt" download="1.6.txt">
+        <ol><a href="download.html">
             <button id="download">
                 <div id="change" > <i class="fi fi-ss-download"></i></div>
                 <div class="tooltipss">Download</div>
@@ -394,15 +884,30 @@
         <br>
         <a href="login.html" draggable="false"><button id="btn">
             <div id="learn">Learn more <i class="fi fi-rs-arrow-circle-right"></i></div>
-            <div id="learnt"><i class="fi fi-ss-user"></i> ADMIN LOGIN <i class="fi fi-ss-arrow-circle-right"></i></div>
+            <div id="learnt"><i class="fi fi-ss-user"></i>ADMIN LOGIN <i class="fi fi-ss-arrow-circle-right"></i></div>
         </button></a>
     </div>
-    <div class="content">
-    <p>Some example text..</p>
-<h2>Another text...</h2>
+    <div class="content" id="content">
+    <p style="font-size: 1.5em;">Take a look at our <a href="termsandconditions.html" id="terms">Terms and Conditions</a>.</p>
+    <p style="font-size: 1.5em;">Take a look at our <a href="voice.html" id="terms">Voice Regonition Module</a>.</p>
+
+    <div class="event">
+    <h1 id="header">EVENT</h1>
+    <div class="events">
+        <div id="ended">ENDED</div>
+        <a id="eventended" href="countdown.html" >2025 LUNAR NEW YEAR COUNTDOWN</a>
+    </div>
+    <div class="events">
+        <div id="ongoing">ONGOING</div>
+        <a id="eventongoing" href="countdown2026.html" >2026 NEW YEAR COUNTDOWN</a>
+    </div>
+
+    </div>
+    <h2>Another text...</h2>
 <p id="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Lorem ipsum dolor sit amet, 
     </p>
     <h2 style="text-align: center;color:red">HOW DID YOU GET THERE ?</h2>
+    </div>
     </div>
     </div>
 </body>
