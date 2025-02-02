@@ -29,6 +29,11 @@
                 font-size: 10px;
             }
 }
+          ::-webkit-scrollbar{width:0.5em}
+    ::-webkit-scrollbar-thumb {
+  background: greenyellow; 
+  border-radius: 5px;
+    }
 @keyframes main {
         0%{position: relative;bottom:-100em;opacity: 0;pointer-events: none;}
         100%{position: relative;bottom:0;opacity: 1;pointer-events: all;}
@@ -78,7 +83,7 @@ body.show{
             background-repeat: no-repeat;
             background-size: auto;
             color:greenyellow;
-            animation: bodyonload 2s forwards;
+            animation: bodyonload 5s forwards;
         
         .container{
             text-align: center;

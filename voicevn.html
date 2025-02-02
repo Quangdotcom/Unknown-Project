@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Recognition</title>
+    <link rel="icon" type="image/x-icon" href="https://icon-library.com/images/voice-message-icon/voice-message-icon-8.jpg">
+    <style>
+        body.light {
+            background-color: #f0f0f0;
+            color: #000;
+        }
+        body.dark {
+            background-color: #333;
+            color: #fff;
+        }
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        #startbtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+        let selectedLanguage = 'en-US'; // Default language
+
+        function updateLanguage() {
+            const langSelect = document.getElementById('lang');
+            selectedLanguage = langSelect.value;
+            recognition.lang = selectedLanguage;
+            console.log('Language set to:', recognition.lang);
+        }
+
+        window.onload = function() {
+            var hours = new Date().getHours();
+            const body = document.body;
+            if (hours < 18) {
+                body.classList.toggle("light");
+            } else {
+                body.classList.toggle("dark");
+            }
+
+            const startbtn = document.getElementById('startbtn');
+            const outputDiv = document.getElementById('output');
+            const langSelect = document.getElementById('lang');
+
+            langSelect.addEventListener('change', updateLanguage);
+
+            recognition.onstart = () => {
+                startbtn.textContent = 'Listening...';
+            };
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                outputDiv.textContent = transcript;
+            };
+
+            recognition.onend = () => {
+                startbtn.textContent = 'Record Again';
+            };
+
+            startbtn.addEventListener('click', () => {
+                recognition.start();
+            });
+
+            // Set initial language
+            updateLanguage();
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Voice Recognition</h1>
+        <select id="lang">
+            <option value="en-US">English (US)</option>
+            <option value="vi-VN">Vietnamese (VN)</option>
+            <option value="es-ES">Spanish (Spain)</option>
+            <option value="fr-FR">French (France)</option>
+            <!-- Add more languages as needed -->
+        </select>
+        <button id="startbtn">Start Recording</button>
+        <div id="output"></div>
+    </div>
+</body>
+</html>

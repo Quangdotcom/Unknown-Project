@@ -4,15 +4,17 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Download page</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn.glitch.global/a47efbd7-1b46-4064-882a-5ea5511e81ad/download.png">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script>
         window.onload = function() {
         var hours = new Date().getHours();
+        console.log(hours);
         const body = document.body;
-        if (hours < 18) {
-            body.classList.toggle("dark");
+        if (hours < 18 && hours > 6) {
+            body.classList.toggle("light");
         }
         else{
             body.classList.toggle("dark");
@@ -40,7 +42,7 @@
                 btn.innerText = messages[counter];
             }, 1000);
             setTimeout(() => {
-                window.location.href = '1.6.exe';
+                window.location.href = 'https://github.com/Quangdotcom/PEOPLE-MANAGEMENT-PROGRAM/releases/download/stable/v1.1.exe';
             }, 5000);
             setTimeout(() => {
                 btn.innerText = 'Download not started yet? Click here to start it again.';
@@ -49,6 +51,10 @@
         }
     </script>
     <style>
+          ::-webkit-scrollbar-thumb {
+  background: #3d00e0; 
+  border-radius: 5px;
+    }
         body{
             background-color: #efe5fd;
             font-size:28px;
@@ -235,7 +241,7 @@
     <div class= 'container'>
         <h1>Download Page</h1>
         <p>Click the button below to download the file.</p>
-        <p><i>Version : 1.6</i></p>
+        <p><i>Version : 1.1</i></p>
         <button id="btn" onclick = "download()">
             <div id = "down">Download <i class="fi fi-ss-inbox-in"></i></div>
             <div id = "downed">Download <i class="fi fi-rs-inbox-in"></i></div>
