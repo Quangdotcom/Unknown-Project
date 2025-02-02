@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Voice Recognition</title>
+    <link rel="icon" type="image/x-icon" href="https://icon-library.com/images/voice-message-icon/voice-message-icon-8.jpg">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+        let selectedLanguage = 'en-US';
+
+        function updateLanguage() {
+            const langSelect = document.getElementById('lang');
+            selectedLanguage = langSelect.value;
+            recognition.lang = selectedLanguage;
+        }
+
+        setTimeout(() => {
+            const loading = document.getElementById('loading'); 
+            loading.innerHTML = 'LOading';
+        },100)
+        setTimeout(() => {
+            const loading = document.getElementById('loading'); 
+            loading.innerHTML = 'LOAding';
+        },200)
+        setTimeout(() => {
+            const loading = document.getElementById('loading'); 
+            loading.innerHTML = 'LOADing';
+        },250)
+        setTimeout(() => {
+            const loading = document.getElementById('loading'); 
+            loading.innerHTML = 'LOADing';
+        },300)
+        setTimeout(() => {
+            const loading = document.getElementById('loading'); 
+            loading.innerHTML = 'LOADIng';
+        },350)
+        setTimeout(() => {
+            const loading = document.getElementById('loading'); 
+            loading.innerHTML = 'LOADINg';
+        },400)
+        setTimeout(() => {
+            const loading = document.getElementById('loading'); 
+            loading.innerHTML = 'LOADING';
+        },450)
+
+        window.onload = function() {
+            const progressElement = document.getElementById("file");
+            function updateProgress(newValue) {
+            progressElement.value = newValue;
+            }
+
+            let currentValue = 0;
+            const targetValue = 100;
+
+            function simulateProgress() {
+            if (currentValue < targetValue) {
+                currentValue++;
+                document.getElementById("label").innerHTML = currentValue + "%";
+                updateProgress(currentValue);
+                setTimeout(simulateProgress, 5);
+            }
+            }
+            simulateProgress()
+
+        var hours = new Date().getHours();
+        const body = document.body;
+        if (hours < 18 && hours > 6) {
+            setTimeout(() => {
+                body.classList.toggle("light");
+        }, 400);
+        }
+        else{
+            setTimeout(() => {
+                body.classList.toggle("dark");
+            }, 400);
+        }
+
+            const startbtn = document.getElementById('startbtn');
+            const outputDiv = document.getElementById('output');
+            const langSelect = document.getElementById('lang');
+
+            langSelect.addEventListener('change', updateLanguage);
+
+            recognition.onstart = () => {
+                startbtn.textContent = 'Listening...';
+            };
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                outputDiv.textContent = transcript;
+            };
+
+            recognition.onend = () => {
+                startbtn.textContent = 'Record Again';
+            };
+
+            startbtn.addEventListener('click', () => {
+                recognition.start();
+            });
+
+            updateLanguage();
+        };
+		function copy() {
+ 			var range = document.createRange();
+            var copy = document.getElementById('copy');
+ 			range.selectNode(document.getElementById("output"));
+ 			window.getSelection().removeAllRanges();
+ 			window.getSelection().addRange(range);
+ 			document.execCommand("copy");
+ 			window.getSelection().removeAllRanges();
+            copy.innerHTML = "Copied";
+            setInterval(function(){
+            copy.innerHTML = "Copy text";
+            }, 2000);
+		}
+    </script>
+    <style>
+            ::-webkit-scrollbar{width:10px;}
+    ::-webkit-scrollbar-thumb {
+  background: rgb(38, 38, 226); 
+  border-radius: 5px;
+    }
+        body{
+            background-color: #3c3c3c;
+            color:blue;
+        .main{
+            text-align: center;
+            position: relative;
+            top:5em;
+            display: none;
+        }
+        #file{
+            height:2em;
+            width: 15em;
+            background-color: #3c3c3c;
+        }
+        #file::-webkit-progress-value {
+      background-color: #3030F1;
+    }
+        #label{
+            text-align: center;
+            position: relative;
+            top:1.65em;
+        }
+        #pro{
+            text-align: center;
+        }
+        h1{
+            font-size: 4em;
+        }
+        .btns{
+            padding: 20px 40px;
+            cursor: pointer;
+            background-color:rgb(38, 38, 226);
+            color:white;
+            border-radius: 10px;
+            font-size: 2em;
+            transition:0.3s;
+            border: none;
+			margin-top: 10px;
+            border: 0.1em solid rgb(191, 235, 255);
+        }
+        .btns:hover{
+            background-color:rgb(191, 235, 255);
+            color:rgb(38, 38, 226);
+            border: 0.1em solid rgb(38, 38, 226);
+        }
+        .btns:focus{
+            background-color:rgb(160, 225, 255);
+            color:rgb(38, 38, 226);
+            border: 0.1em solid rgb(38, 38, 226);
+        }
+        #output{
+            font-size: 1.2em;
+            text-align: center;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px blue solid;
+            padding:10px;
+        }
+		.space{
+			text-align: center;
+			position: relative;
+			top:8em;
+		}
+		.out{
+			border: 1px blue solid;
+			border-radius: 10px;
+			margin-top: 10px;
+			padding-bottom: 10px;
+		}
+        #output{
+            color:black;
+        }
+        #lang{
+            all: unset;
+            appearance: auto;
+            width: 50%;
+            padding: 20px 0px;
+            cursor: pointer;
+            background-color:rgb(38, 38, 226);
+            color:white;
+            border-radius: 10px;
+            font-size: 2em;
+            transition:0.3s;
+            border: none;
+			margin-top: 10px;
+            border: 0.1em solid rgb(191, 235, 255);
+        }
+        #lang:hover{
+            background-color:rgb(159, 224, 255);
+            color:rgb(38, 38, 226);
+            border: 0.1em solid rgb(38, 38, 226);
+        }
+        .load{
+            text-align: center;
+            position: fixed;
+            font-size: 1em;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            background-color: rgba(19, 19, 95, 0.527);
+            border-radius: 0.5em;
+            padding: 0.4em;
+            color:white;
+            pointer-events: none;
+            transition: 1s;
+        }
+    }
+    body.light{
+            background-color: rgb(191, 235, 255);
+            color:blue;
+            transition: 0.7s;
+        .main{
+            text-align: center;
+            position: relative;
+            top:5em;
+            display: block;
+        }
+        .load{
+            opacity: 0;
+            z-index: 1;
+        }
+        h1{
+            font-size: 4em;
+        }
+        .btns{
+            padding: 20px 40px;
+            cursor: pointer;
+            background-color:rgb(38, 38, 226);
+            color:white;
+            border-radius: 10px;
+            font-size: 2em;
+            transition:0.3s;
+            border: none;
+			margin-top: 10px;
+            border: 0.1em solid rgb(38, 38, 226);
+        }
+        .btns:hover{
+            background-color:rgb(191, 235, 255);
+            color:rgb(38, 38, 226);
+            border: 0.1em solid rgb(38, 38, 226);
+        }
+        .btns:focus{
+            background-color:rgb(160, 225, 255);
+            color:rgb(38, 38, 226);
+            border: 0.1em solid rgb(38, 38, 226);
+        }
+        #output{
+            font-size: 1.2em;
+            text-align: center;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px blue solid;
+            padding:10px;
+        }
+		.space{
+			text-align: center;
+			position: relative;
+			top:8em;
+		}
+		.out{
+			border: 1px blue solid;
+			border-radius: 10px;
+			margin-top: 10px;
+			padding-bottom: 10px;
+		}
+        #output{
+            color:black;
+        }
+        #lang{
+            all: unset;
+            appearance: auto;
+            width: 50%;
+            padding: 20px 0px;
+            cursor: pointer;
+            background-color:rgb(38, 38, 226);
+            color:white;
+            border-radius: 10px;
+            font-size: 2em;
+            transition:0.3s;
+            border: none;
+			margin-top: 10px;
+            border: 0.1em solid rgb(38, 38, 226);
+        }
+        #lang:hover{
+            background-color:rgb(159, 224, 255);
+            color:rgb(38, 38, 226);
+            border: 0.1em solid rgb(38, 38, 226);
+        }
+        #home {
+            font-size:14px;
+            text-align:center;
+            position:fixed;
+            background-color: rgba(71, 71, 71, 0.2);
+            backdrop-filter: blur(0.5em);
+            top:5px;
+            left:5px;
+            padding:10px;
+            border-radius:10px;
+            text-decoration:none;
+            color:rgb(38, 38, 226);
+            transition:0.3s;
+            border:1px solid rgb(38, 38, 226);
+  }
+    #home:hover{
+        background-color: rgba(38, 38, 226, 0.425);;
+        backdrop-filter: blur(0.5em);
+        opacity: 1;
+  }
+    }
+    body.dark{
+            background-color: black;
+            color:blue;
+            transition: 0.7s;
+        .main{
+            text-align: center;
+            position: relative;
+            top:5em;
+            display: block;
+            transition: 0.7s;
+        }
+        .load{
+            opacity: 0;
+            z-index: 1;
+        }
+        h1{
+            font-size: 4em;
+        }
+        .btns{
+            padding: 20px 40px;
+            cursor: pointer;
+            background-color:rgb(38, 38, 226);
+            color:white;
+            border-radius: 10px;
+            font-size: 2em;
+            transition:0.3s;
+            border: none;
+			margin-top: 10px;
+            border: 0.1em solid rgb(38, 38, 226);
+        }
+        .btns:hover{
+            background-color:black;
+            color:rgb(38, 38, 226);
+            border: 0.1em solid rgb(38, 38, 226);
+        }
+        .btns:focus{
+            background-color:rgb(17, 17, 17);
+            color:rgb(38, 38, 226);
+            border: 0.1em solid rgb(38, 38, 226);
+        }
+        #output{
+            font-size: 1.2em;
+            text-align: center;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px blue solid;
+            padding:10px;
+        }
+		.space{
+			text-align: center;
+			position: relative;
+			top:8em;
+		}
+		.out{
+			border: 1px blue solid;
+			border-radius: 10px;
+			margin-top: 10px;
+			padding-bottom: 10px;
+		}
+        #output{
+            color:white;
+        }
+        #lang{
+            all: unset;
+            appearance: auto;
+            width: 50%;
+            padding: 20px 0px;
+            cursor: pointer;
+            background-color:rgb(38, 38, 226);
+            color:white;
+            border-radius: 10px;
+            font-size: 2em;
+            transition:0.3s;
+            border: none;
+			margin-top: 10px;
+            border: 0.1em solid rgb(38, 38, 226);
+        }
+        #lang:hover{
+            background-color:black;
+            color:rgb(38, 38, 226);
+            border: 0.1em solid rgb(38, 38, 226);
+        }
+        #home {
+            font-size:14px;
+            text-align:center;
+            position:fixed;
+            background-color: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(0.5em);
+            top:5px;
+            left:5px;
+            padding:10px;
+            border-radius:10px;
+            text-decoration:none;
+            color:white;
+            transition:0.3s;
+            border:1px solid white;
+  }
+    #home:hover{
+        background-color: rgba(38, 38, 226, 0.479);
+        backdrop-filter: blur(0.5em);
+        opacity: 1;
+  }
+    }
+    </style>
+</head>
+<body>
+    <div class="load">
+        <h1 id="loading">Loading</h1>
+        <div id="ten"><label for="file" id="label"></label></div>
+        <div id="pro"><progress id="file" value="0" max="100"></progress></div>
+        </div>
+    <div class="main">
+    <a href="index.html" id="home">BACK TO HOME</a>
+    <h1>Voice Recognition Module</h1>
+    <select id="lang" name="lang">
+        <optgroup label="Choose Language">
+                <option value="af">Afrikaans</option>
+                <option value="sq">Albanian</option>
+                <option value="am">Amharic</option>
+                <option value="ar">Arabic</option>
+                <option value="an">Aragonese</option>
+                <option value="hy">Armenian</option>
+                <option value="ast">Asturian</option>
+                <option value="az">Azerbaijani</option>
+                <option value="eu">Basque</option>
+                <option value="be">Belarusian</option>
+                <option value="bn">Bengali</option>
+                <option value="bs">Bosnian</option>
+                <option value="br">Breton</option>
+                <option value="bg">Bulgarian</option>
+                <option value="ca">Catalan</option>
+                <option value="ckb">Central Kurdish</option>
+                <option value="zh">Chinese</option>
+                <option value="zh-HK">Chinese (Hong Kong)</option>
+                <option value="zh-CN">Chinese (Simplified)</option>
+                <option value="zh-TW">Chinese (Traditional)</option>
+                <option value="co">Corsican</option>
+                <option value="hr">Croatian</option>
+                <option value="cs">Czech</option>
+                <option value="da">Danish</option>
+                <option value="nl">Dutch</option>
+                <option value="en">English</option>
+                <option value="en-AU">English (Australia)</option>
+                <option value="en-CA">English (Canada)</option>
+                <option value="en-IN">English (India)</option>
+                <option value="en-NZ">English (New Zealand)</option>
+                <option value="en-ZA">English (South Africa)</option>
+                <option value="en-GB">English (United Kingdom)</option>
+                <option value="en-US" selected>English (United States)</option>
+                <option value="eo">Esperanto</option>
+                <option value="et">Estonian</option>
+                <option value="fo">Faroese</option>
+                <option value="fil">Filipino</option>
+                <option value="fi">Finnish</option>
+                <option value="fr">French</option>
+                <option value="fr-CA">French (Canada)</option>
+                <option value="fr-FR">French (France)</option>
+                <option value="fr-CH">French (Switzerland)</option>
+                <option value="gl">Galician</option>
+                <option value="ka">Georgian</option>
+                <option value="de">German</option>
+                <option value="de-AT">German (Austria)</option>
+                <option value="de-DE">German (Germany)</option>
+                <option value="de-LI">German (Liechtenstein)</option>
+                <option value="de-CH">German (Switzerland)</option>
+                <option value="el">Greek</option>
+                <option value="gn">Guarani</option>
+                <option value="gu">Gujarati</option>
+                <option value="ha">Hausa</option>
+                <option value="haw">Hawaiian</option>
+                <option value="he">Hebrew</option>
+                <option value="hi">Hindi</option>
+                <option value="hu">Hungarian</option>
+                <option value="is">Icelandic</option>
+                <option value="id">Indonesian</option>
+                <option value="ia">Interlingua</option>
+                <option value="ga">Irish</option>
+                <option value="it">Italian</option>
+                <option value="it-IT">Italian (Italy)</option>
+                <option value="it-CH">Italian (Switzerland)</option>
+                <option value="ja">Japanese</option>
+                <option value="kn">Kannada</option>
+                <option value="kk">Kazakh</option>
+                <option value="km">Khmer</option>
+                <option value="ko">Korean</option>
+                <option value="ku">Kurdish</option>
+                <option value="ky">Kyrgyz</option>
+                <option value="lo">Lao</option>
+                <option value="la">Latin</option>
+                <option value="lv">Latvian</option>
+                <option value="ln">Lingala</option>
+                <option value="lt">Lithuanian</option>
+                <option value="mk">Macedonian</option>
+                <option value="ms">Malay</option>
+                <option value="ml">Malayalam</option>
+                <option value="mt">Maltese</option>
+                <option value="mr">Marathi</option>
+                <option value="mn">Mongolian</option>
+                <option value="ne">Nepali</option>
+                <option value="no">Norwegian</option>
+                <option value="nb">Norwegian Bokmål</option>
+                <option value="nn">Norwegian Nynorsk</option>
+                <option value="oc">Occitan</option>
+                <option value="or">Oriya</option>
+                <option value="om">Oromo</option>
+                <option value="ps">Pashto</option>
+                <option value="fa">Persian</option>
+                <option value="pl">Polish</option>
+                <option value="pt">Portuguese</option>
+                <option value="pt-BR">Portuguese (Brazil)</option>
+                <option value="pt-PT">Portuguese (Portugal)</option>
+                <option value="pa">Punjabi</option>
+                <option value="qu">Quechua</option>
+                <option value="ro">Romanian</option>
+                <option value="mo">Romanian (Moldova)</option>
+                <option value="rm">Romansh</option>
+                <option value="ru">Russian</option>
+                <option value="gd">Scottish Gaelic</option>
+                <option value="sr">Serbian</option>
+                <option value="sh">Serbo</option>
+                <option value="sn">Shona</option>
+                <option value="sd">Sindhi</option>
+                <option value="si">Sinhala</option>
+                <option value="sk">Slovak</option>
+                <option value="sl">Slovenian</option>
+                <option value="so">Somali</option>
+                <option value="st">Southern Sotho</option>
+                <option value="es">Spanish</option>
+                <option value="es-AR">Spanish (Argentina)</option>
+                <option value="es-419">Spanish (Latin America)</option>
+                <option value="es-MX">Spanish (Mexico)</option>
+                <option value="es-ES">Spanish (Spain)</option>
+                <option value="es-US">Spanish (United States)</option>
+                <option value="su">Sundanese</option>
+                <option value="sw">Swahili</option>
+                <option value="sv">Swedish</option>
+                <option value="tg">Tajik</option>
+                <option value="ta">Tamil</option>
+                <option value="tt">Tatar</option>
+                <option value="te">Telugu</option>
+                <option value="th">Thai</option>
+                <option value="ti">Tigrinya</option>
+                <option value="to">Tongan</option>
+                <option value="tr">Turkish</option>
+                <option value="tk">Turkmen</option>
+                <option value="tw">Twi</option>
+                <option value="uk">Ukrainian</option>
+                <option value="ur">Urdu</option>
+                <option value="ug">Uyghur</option>
+                <option value="uz">Uzbek</option>
+                <option value="vi">Vietnamese</option>
+                <option value="wa">Walloon</option>
+                <option value="cy">Welsh</option>
+                <option value="fy">Western Frisian</option>
+                <option value="xh">Xhosa</option>
+                <option value="yi">Yiddish</option>
+                <option value="yo">Yoruba</option>
+                <option value="zu">Zulu</option>
+            </select>
+    <button id="startbtn" class="btns">Start Recording</button>
+	<div class="out">
+    	<h2>RECORDING RESULT</h2>
+    	<div id="output">Click the button above to record your voice and see what it will be.</div>
+    	<button onclick="copy()" class="btns" id="copy">Copy text</button>
+	</div>
+</div>
+<div class="space">
+    <br>
+</div>
+</body>
+</html>

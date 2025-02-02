@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Download page</title>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+        window.onload = function() {
+        var hours = new Date().getHours();
+        const body = document.body;
+        if (hours < 18) {
+            body.classList.toggle("dark");
+        }
+        else{
+            body.classList.toggle("dark");
+        }
+    }
+        function download(){
+            const btn = document.getElementById('btn');
+            btn.disabled = true;
+            const messages = [
+                'Your download will start in 5 seconds...',
+                'Your download will start in 4 seconds...',
+                'Your download will start in 3 seconds...',
+                'Your download will start in 2 seconds...',
+                'Your download will start in 1 seconds...',
+                'Download started...'
+            ]
+            let counter = 0;
+            btn.innerText = messages[counter];
+            const interval = setInterval(() => {
+                counter++;
+                if(counter === messages.length){
+                    clearInterval(interval);
+                    return;
+                }
+                btn.innerText = messages[counter];
+            }, 1000);
+            setTimeout(() => {
+                window.location.href = '1.6.exe';
+            }, 5000);
+            setTimeout(() => {
+                btn.innerText = 'Download not started yet? Click here to start it again.';
+                btn.disabled = false;
+            }, 10000);
+        }
+    </script>
+    <style>
+        body{
+            background-color: #efe5fd;
+            font-size:28px;
+            color:#5300e8;
+        
+        .container{
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 2em;
+        }
+        #btn{
+            padding: 0.5em 1em;
+            font-size: 1em;
+            background-color: #5300e8;
+            border-radius: 0.5em;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 0.1em solid #efe5fd;
+        }
+        #btn:hover{
+            background-color: #efe5fd;
+            color:#5300e8;
+            border: 0.1em solid #5300e8;
+        }
+        #btn:disabled{
+            background-color: #ac9cc7;
+            color: black;
+            cursor: not-allowed;
+        }
+        #downed{
+            display: none;
+        }
+        #btn:hover{
+            #down{
+                display: none;
+            }
+            #downed{
+                display: block;
+            }
+        }
+        .conts{
+            display: none;
+        }
+        #btn:hover{
+            .cont{
+                display: none;
+            }
+            .conts{
+                display: block;
+            }
+        }
+        #term{
+            color:rgb(4, 0, 245);
+        }
+        #term:hover{
+            text-decoration: none;
+        }
+    }
+    body.light{
+            background-color: #efe5fd;
+            font-size:28px;
+            color:#5300e8;
+        
+        .container{
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 2em;
+        }
+        #btn{
+            padding: 0.5em 1em;
+            font-size: 1em;
+            background-color: #5300e8;
+            border-radius: 0.5em;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 0.1em solid #efe5fd;
+        }
+        #btn:hover{
+            background-color: #efe5fd;
+            color:#5300e8;
+            border: 0.1em solid #5300e8;
+        }
+        #btn:disabled{
+            background-color: #ac9cc7;
+            color: black;
+            cursor: not-allowed;
+        }
+        #downed{
+            display: none;
+        }
+        #btn:hover{
+            #down{
+                display: none;
+            }
+            #downed{
+                display: block;
+            }
+        }
+        .conts{
+            display: none;
+        }
+        #btn:hover{
+            .cont{
+                display: none;
+            }
+            .conts{
+                display: block;
+            }
+        }
+        #term{
+            color:rgb(4, 0, 245);
+        }
+        #term:hover{
+            text-decoration: none;
+        }
+    }
+    body.dark{
+            background-color: black;
+            font-size:28px;
+            color:#5300e8;
+        
+        .container{
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 2em;
+        }
+        #btn{
+            padding: 0.5em 1em;
+            font-size: 1em;
+            background-color: #5300e8;
+            border-radius: 0.5em;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 0.1em solid black;
+        }
+        #btn:hover{
+            background-color: black;
+            color:#5300e8;
+            border: 0.1em solid #5300e8;
+        }
+        #btn:disabled{
+            background-color: rgb(43, 43, 43);
+            color: white;
+            cursor: not-allowed;
+        }
+        #downed{
+            display: none;
+        }
+        #btn:hover{
+            #down{
+                display: none;
+            }
+            #downed{
+                display: block;
+            }
+        }
+        .conts{
+            display: none;
+        }
+        #btn:hover{
+            .cont{
+                display: none;
+            }
+            .conts{
+                display: block;
+            }
+        }
+        #term{
+            color:rgb(4, 0, 245);
+        }
+        #term:hover{
+            text-decoration: none;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class= 'container'>
+        <h1>Download Page</h1>
+        <p>Click the button below to download the file.</p>
+        <p><i>Version : 1.6</i></p>
+        <button id="btn" onclick = "download()">
+            <div id = "down">Download <i class="fi fi-ss-inbox-in"></i></div>
+            <div id = "downed">Download <i class="fi fi-rs-inbox-in"></i></div>
+        </button>
+        <a href="index.html" draggable="false"><button class="home" id="btn">
+            <div class="cont">Back to Home <i class="fi fi-ss-home"></i></div>
+            <div class="conts">Back to Home <i class="fi fi-rs-home"></i></div>
+        </button></a>
+        <p><i>By downloading, you agree to our <a id="term" href="termsandconditions.html">Terms and Conditions</a>.</i></p>
+    </div>
+</body>
+</html>
