@@ -4,8 +4,8 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Changelogs</title>
-    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/1828/1828634.png">
+    <title>Home</title>
+    <link rel="icon" type="image/x-icon" href="https://icon-library.com/images/html-home-icon/html-home-icon-4.jpg">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -37,13 +37,14 @@
             content: "About this project";
             font-size: 1em;
         }
-        #changelogs:not(:hover)::after{
+        #home:not(:hover)::after{
                 content: "Hi there !";
                 position: absolute;
                 left:20px;
                 top:12px;
                 color:#5300e8;
                 font-size: 1em;
+                transition: 0.3s;
                 pointer-events: none;
                 z-index:-1;
             }
@@ -75,7 +76,7 @@
         #about:hover::after{
             content: " ";
         }
-    }  
+    }
     
     @media only screen and (max-width:610px) {
             body{
@@ -94,11 +95,11 @@
         0%{position: fixed;top:-100em;opacity: 0;pointer-events: none;}
         100%{position: fixed;top:0;opacity: 1;pointer-events: all;}
        }
-       @keyframes content {
+    @keyframes content {
         0%{position: relative;bottom:-100em;opacity: 0;pointer-events: none;}
         100%{position: relative;bottom:0;opacity: 1;pointer-events: all;}
        }
-       .menu{
+        .menu{
             background-color: rgba(212, 191, 249,0.7);
             text-align: center;
             position: fixed;
@@ -116,21 +117,21 @@
             display: inline;
             }
         }
-        .menu:hover{
-            button{
-                padding:10px 20px;
-                font-size: 1em;
-                border-radius: 10px;
-                background-color: rgba(212, 191, 249,0.7);
-                border: 1px solid rgba(212, 191, 249,0.7);
-            }
-        }
         .menu:not(:hover){
             button:focus{
                 box-shadow: none;
             }
-            #changelogs:focus{
+            #home:focus{
                 border-bottom: 3px solid #5300e8;
+            }
+        }
+        .menu:hover{
+            button{
+                padding:10px 20px;
+                font-size: 1em;
+                border-radius: 0.5em;
+                background-color: rgba(212, 191, 249,0.7);
+                border: 1px solid rgba(212, 191, 249,0.7);
             }
         }
         .menu{
@@ -167,10 +168,10 @@
                 font-size: 2em;
                 transition: 0.3s;
             }
-            #changelogs{
+            #home{
                 border-bottom: 3px solid #5300e8;
             }
-            #changelogs:focus{
+            #home:focus{
                 border-bottom: 3px solid rgba(212, 191, 249,0.7);
             }
            
@@ -186,19 +187,29 @@
             }
 
         }
-        .view{
-        position: relative;
-        top:5em;
-      }
         .main:hover{
         transform: scale(1.01);
+       }
+       .content{
+        animation: content 0.7s forwards;
+        animation-delay: 1.3s;
+        pointer-events: none;
+        text-align: center;
+        opacity: 0;
+        p{
+            text-align: center;
+            width: 20em;
+            margin-left: auto;
+            margin-right: auto;
+        }
        }
        .main{
         background-color: #b794f6;
         color:#6002ee;
         transition: 0.3s;
-        height: auto;
         opacity: 0;
+        height: auto;
+        pointer-events: none;
         margin: 0.5em;
         text-align: center;
         border-radius: 30px;
@@ -213,8 +224,9 @@
         button{
             all:unset;
             border: 1px solid rgba(212, 191, 249,0.7);
-            padding:10px 20px;
+            padding:0.3em 0.6em;
             color:#3d00e0;
+            width: 50%;
             border-radius: 10px;
             background-color: rgba(212, 191, 249,0.7);
             transition: 0.3s;     
@@ -227,48 +239,6 @@
         button:hover{
             background-color: #3d00e0;
             color:white;
-            transform: scale(1.01);
-        }
-        button:focus{
-                transform: translate(4px,4px);
-                box-shadow: none;
-            }
-       }
-       .mainn{
-        background-color: #b794f6;
-        color:#6002ee;
-        transition: 0.3s;
-        height: auto;
-        margin: 0.5em;
-        margin-left: 10em;
-        margin-right: 10em;
-        text-align: center;
-        border-radius: 30px;
-        h1{
-            font-size: 4em;
-        }
-        h2{
-            font-size: 2em;
-        }
-        button{
-            all:unset;
-            border: 1px solid rgba(212, 191, 249,0.7);
-            padding:10px 20px;
-            color:#3d00e0;
-            border-radius: 10px;
-            background-color: rgba(212, 191, 249,0.7);
-            transition: 0.3s;     
-            font-size: 3em;
-            cursor: pointer;
-            position: relative;
-            top:-0.3em;
-            box-shadow: 3px 4px 1px 3px #652dfd;
-            transition: 0.3s;
-        }
-        button:hover{
-            background-color: #3d00e0;
-            color:white;
-            transform: scale(1.01);
         }
         button:focus{
                 transform: translate(4px,4px);
@@ -344,40 +314,8 @@
         border: #3d00e0 solid 2px;
         border-radius: 50px;
     }
-    #downn{
-       display: none; 
-    }
-    #btn:hover{
-        #down{
-            display: none;
-        }
-        #downn{
-            display: block;
-        }
-    }
-    #btn:hover::after{
-        content: "Check out";
-        top:2em;
-        left:-1.5em;
-        right:0;
-        font-size: 1em;
-        width: 5em;
-        color: white;
-        border-radius: 10px;
-        transition: 0.3s;
-    }
-    #btn:not(:hover)::after{
-        content: " ";
-        font-size: 0;
-        width: 0;
-    }
     #home{
         width: 1em;
-    }
-    #home:not(:hover)::after{
-        content: " ";
-        font-size: 0;
-        width: 0;
     }
     .tooltip{
         display: block;
@@ -415,41 +353,10 @@
         font-size: 0;
         transition: 0.3s;
     }
-    #ver1{
-        opacity: 0;
-        animation: content 0.7s forwards;
-        animation-delay: 1.6s;
-    }
-    #ver2{
-        opacity: 0;
-        animation: content 0.7s forwards;
-        animation-delay: 1.8s;
-    }
-    #ver3{
-        opacity: 0;
-        animation: content 0.7s forwards;
-        animation-delay: 2s;
-    }
-    #ver4{
-        opacity: 0;
-        animation: content 0.7s forwards;
-        animation-delay: 2.2s;
-    }
-    #ver5{
-        opacity: 0;
-        animation: content 0.7s forwards;
-        animation-delay: 2.4s;
-    }
-    #ver6{
-        opacity: 0;
-        animation: content 0.7s forwards;
-        animation-delay: 2.6s;
-    }
-    #ver7{
-        opacity: 0;
-        animation: content 0.7s forwards;
-        animation-delay: 2.8s;
-    }
+      .view{
+        position: relative;
+        top:5em;
+      }
     </style>
     <script>
 
@@ -457,22 +364,22 @@
 </head>
 <body>
     <div class="menu">
-        <ol><a href="index.html" draggable="false"><button id="home">
+        <ol><button id="home">
             <div id="house"><i class="fi fi-rs-home"></i></div>
             <div id="housee"><i class="fi fi-ss-home"></i></div>
             <div class="tooltip">Home</div>
-        </button></a></ol>
+        </button></ol>
         <ol><a href="404.txt" download="1.6.txt">
             <button id="download">
                 <div id="change" > <i class="fi fi-ss-download"></i></div>
                 <div class="tooltipss">Download</div>
             </button>
         </a></ol>
-        <ol><button id="changelogs">
+        <ol><a href="changelogs.html" draggable="false"><button id="changelogs">
             <div id="change" > <i class="fi fi-rs-poll-h"></i></div>
             <div id="changed"> <i class="fi fi-ss-poll-h"></i></div>
             <div class="tooltips">Changelogs</div>
-        </button></ol>
+        </button></a></ol>
         <ol><a href="about.html" draggable="false"><button id="about">
         <div id="info" > <i class="fi fi-rs-info"></i></div>        
         <div id="infor" > <i class="fi fi-ss-info"></i></div>
@@ -481,95 +388,22 @@
     </div>
     <div class="view">
     <div class="main">
-        <h1>CHANGELOGS</h1>
+        <h1>PROJECT NAME</h1>
         <hr>
-        <h2>See what changes we made throughout the period.</h2>
+        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
         <br>
-        </div>
-    <div class="mainn" id="ver1">
-        <h2>Latest version: 1.6</h2>
-        <h4>December 25, 2024</h4>
-        <h2>What's new:</h2>
-        <h3>&#8226 Optimized for better experiences</h3>
-        <h3>&#8226 Fix some crash bugs</h3>
-        <h3>&#8226 Added Searching feature</h3>
-        <h3>&#8226 Merry Christmas !</h3>
-        <br>
-        <a href="" draggable="false"><button id="btn">
-            <div id="down"><i class="fi fi-rs-search"></i></div>
-            <div id="downn"><i class="fi fi-ss-search"></i></div>
+        <a href="login.html" draggable="false"><button id="btn">
+            <div id="learn">Learn more <i class="fi fi-rs-arrow-circle-right"></i></div>
+            <div id="learnt"><i class="fi fi-ss-user"></i> ADMIN LOGIN <i class="fi fi-ss-arrow-circle-right"></i></div>
         </button></a>
     </div>
-    <div class="mainn" id="ver2">
-        <h2>Version 1.5</h2>
-        <h4>December 10, 2024</h4>
-        <h2>What's new:</h2>
-        <h3>&#8226 Screen reader feedback on suggestions are now applied</h3>
-        <h3>&#8226 Fix some bugs</h3>
-        <br>
-        <a href="" draggable="false"><button id="btn">
-            <div id="learn">  <i class="fi fi-rs-search"></i></div>
-            <div id="learnt">  <i class="fi fi-ss-search"></i></div>
-        </button></a>
+    <div class="content">
+    <p>Some example text..</p>
+<h2>Another text...</h2>
+<p id="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Lorem ipsum dolor sit amet, 
+    </p>
+    <h2 style="text-align: center;color:red">HOW DID YOU GET THERE ?</h2>
     </div>
-    <div class="mainn" id="ver3">
-        <h2>Version 1.4</h2>
-        <h4>November 29, 2024</h4>
-        <h2>What's new:</h2>
-        <h3>&#8226 Empty files now display correctly</h3>
-        <br>
-        <a href="" draggable="false"><button id="btn">
-            <div id="learn">  <i class="fi fi-rs-search"></i></div>
-            <div id="learnt">  <i class="fi fi-ss-search"></i></div>
-        </button></a>
-    </div>
-    <div class="mainn" id="ver4">
-        <h2>Version 1.3</h2>
-        <h4>October 17, 2024</h4>
-        <h2>What's new:</h2>
-        <h3>&#8226 No longer does renaming the spec question include a scroll bar</h3>
-        <h3>&#8226 Fix some minor bugs</h3>
-        <br>
-        <a href="" draggable="false"><button id="btn">
-            <div id="learn">  <i class="fi fi-rs-search"></i></div>
-            <div id="learnt">  <i class="fi fi-ss-search"></i></div>
-        </button></a>
-    </div>
-    <div class="mainn" id="ver5">
-        <h2>Version 1.2</h2>
-        <h4>August 20, 2024</h4>
-        <h2>What's new:</h2>
-        <h3>&#8226 Fixed an issue where renamed files did not update</h3>
-        <h3>&#8226 Fix some bugs</h3>
-        <h3>&#8226 Adding new files will auto-populate the path</h3>
-        <br>
-        <a href="" draggable="false"><button id="btn">
-            <div id="learn">  <i class="fi fi-rs-search"></i></div>
-            <div id="learnt">  <i class="fi fi-ss-search"></i></div>
-        </button></a>
-    </div>
-    <div class="mainn" id="ver6">
-        <h2>Version 1.1</h2>
-        <h4>August 13, 2024</h4>
-        <h2>What's new:</h2>
-        <h3>&#8226 A missing checkbox label on commit dialog has been added</h3>
-        <br>
-        <a href="" draggable="false"><button id="btn">
-            <div id="learn">  <i class="fi fi-rs-search"></i></div>
-            <div id="learnt">  <i class="fi fi-ss-search"></i></div>
-        </button></a>
-    </div>
-    <div class="mainn" id="ver7">
-        <h2>First release: 1.0</h2>
-        <h4>August 9, 2024</h4>
-        <h3>No information.</h3>
-        <br>
-        <a href="" draggable="false"><button id="btn">
-            <div id="learn">  <i class="fi fi-rs-search"></i></div>
-            <div id="learnt">  <i class="fi fi-ss-search"></i></div>
-        </button></a>
-    </div>
-    <h2 style="text-align: center;color:red;opacity: 0;animation: content 0.7s forwards;animation-delay: 3s;">HOW DID YOU GET THERE ?</h2>
     </div>
 </body>
 </html>
